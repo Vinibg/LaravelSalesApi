@@ -1,0 +1,28 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: vini
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    container_name: laravel-app
+    working_dir: /var/www/html
+    ports:
+      - "8088:80"
+    volumes:
+      - ./src:/var/www/html
+
+  db-laravel:
+    image: mysql:8.0.29
+    ports:
+      - "3306:3306"
+    container_name: laravel-db
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: password
+      MYSQL_USER: vini
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
