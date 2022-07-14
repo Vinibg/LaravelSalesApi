@@ -9,6 +9,16 @@ This Project is a Laravel aplication using docker containers, that is used to su
 - Docker
 
 ## How to install using docker-compose
+### Configure .env
+You need do go into src and copy .env.example to .env. After that, you need to set the mysql credentials to be compatible with docker-compose, like this:
+```
+DB_CONNECTION=mysql
+DB_HOST=db-laravel
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=vini
+DB_PASSWORD=password
+```
 ### Run:
 ```
 docker-compose build app
