@@ -23,6 +23,8 @@ DB_PASSWORD=password
 ```
 docker-compose build app
 docker-compose up -d
+docker-compose exec app composer install
+docker-compose exec app php artisan key:generate
 ```
 <p>Ps:For more information about docker click <a href="https://laravel.com/docs/9.x">here</a>.</p>
 
