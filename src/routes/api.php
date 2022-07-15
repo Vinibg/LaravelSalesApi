@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/', function () {
     return "hello world";
+});
+
+Route::group(['prefix' => 'user'], function(){
+    Route::get('/', [UserController::class, 'findAll']);
+    Route::post('/', [UserController::class, 'create']);
+    Route::put('/{user_id}', [UserController::class, 'update']);
+    Route::delete('/{user_id}', [UserController::class, 'delete']);
 });
